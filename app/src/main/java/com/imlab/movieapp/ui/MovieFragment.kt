@@ -8,6 +8,7 @@ import com.imlab.movieapp.databinding.FragmentMovieBinding
 
 
 class MovieFragment : Fragment(R.layout.fragment_movie) {
+
     private lateinit var binding : FragmentMovieBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
