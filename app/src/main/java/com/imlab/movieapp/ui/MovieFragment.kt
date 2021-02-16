@@ -31,9 +31,13 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
 
         viewModel.fetchUpcomingMovies().observe(viewLifecycleOwner, Observer {
             Log.d("LiveData", "en el observe $it")
+            //REMOVI EL RESTO DEL CODIGO YA QUE NO HACE DIFERENCIA. DESDE ESTE PUNTO
+            // EL PROGRAMA YA NO CARGA
         })
 
         Log.d("LiveData","Despues retrofit")
+
+
     }
 
 
