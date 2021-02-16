@@ -8,7 +8,22 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
+
+    val retro = {
+        val response = {
+            Retrofit.Builder()
+                    .baseUrl(AppConstans.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+                    .build().create(IWebService::class.java)
+        }
+
+        Log.d("LiveData", "$response.data")
+    }
+
+
     val webservice: IWebService by lazy {
+        retro()
+
         Log.d("LiveData","En el retrofit")
 
         Retrofit.Builder()

@@ -9,11 +9,11 @@ class MovieDataSource ( private val webService : IWebService) {
 
      suspend fun getUpcomingMovies(): Movies {
        Log.d("LiveData","MovieDataSource pass")
-       return webService.getUpcomingMovies(AppConstans.API_KEY)
+       return webService.getUpcomingMovies( AppConstans.API_KEY )
      }
 
-     suspend fun getTopRatedMovies(): Movies = webService.getTopRatedMovies(AppConstans.API_KEY)
+     suspend fun getTopRatedMovies(): Movies = webService.getTopRatedMovies( AppConstans.API_KEY )
 
-     suspend fun getPopularMovies(): Movies = webService.getPopularMovies(AppConstans.API_KEY)
+     suspend fun getPopularMovies(): Movies = webService.getPopularMovies( AppConstans.API_KEY )
 
 }

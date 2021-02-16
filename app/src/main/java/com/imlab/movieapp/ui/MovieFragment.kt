@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.imlab.movieapp.R
 import com.imlab.movieapp.application.RetrofitClient
+import com.imlab.movieapp.core.Resource
 import com.imlab.movieapp.data.remote.MovieDataSource
 import com.imlab.movieapp.databinding.FragmentMovieBinding
 import com.imlab.movieapp.presentation.MovieViewModel
@@ -29,10 +30,14 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
 
         Log.d("LiveData","Antes retrofit")
 
-        viewModel.fetchUpcomingMovies().observe(viewLifecycleOwner, Observer {
-            Log.d("LiveData", "en el observe $it")
-            //REMOVI EL RESTO DEL CODIGO YA QUE NO HACE DIFERENCIA. DESDE ESTE PUNTO
-            // EL PROGRAMA YA NO CARGA
+        viewModel.fetchUpcomingMovies().observe(viewLifecycleOwner, Observer { result->
+            //Log.d("LiveData", "en el observe $it")
+
+            when ( result ) {
+                is Resource.Loading -> { Log.d("LiveData", "Loading..." ) }
+                is Resource.Success -> { Log.d("LiveData", "Success Yuhu!! i love programing!" ) }
+                is Resource.Failure -> { Log.d("LiveData", "Fail...Ow crap i hate programing, i wanna cry :C" ) }
+            }
         })
 
         Log.d("LiveData","Despues retrofit")
