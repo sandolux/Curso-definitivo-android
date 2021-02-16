@@ -31,7 +31,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
         Log.d("LiveData","Antes retrofit")
 
         viewModel.fetchUpcomingMovies().observe(viewLifecycleOwner, Observer { result->
-            //Log.d("LiveData", "en el observe $it")
+            Log.d("LiveData", "en el observe $result")
 
             when ( result ) {
                 is Resource.Loading -> { Log.d("LiveData", "Loading..." ) }
