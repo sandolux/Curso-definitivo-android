@@ -1,11 +1,11 @@
 package com.imlab.movieapp.data.model
 
 data class Movie(
-        val id: Int = -1,
         val adult: Boolean = false,
+        val backdrop_path: String = "",
         val genre_ids: List<Int> = listOf(),
-        val backdrop_path : String = "",
-        val original_title : String = "",
+        val id: Int = -1,
+        val original_title: String = "",
         val original_language: String = "",
         val overview: String = "",
         val popularity: Double = -1.0,
@@ -17,4 +17,4 @@ data class Movie(
         val vote_count: Int = -1
 )
 
-data class Movies( val results : List<Movie> = listOf())
+data class Movies( val results : List< Movie > = listOf() )
