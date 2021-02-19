@@ -9,16 +9,19 @@ import com.imlab.movieapp.interfaces.IMovieRepository
 import com.imlab.movieapp.repository.MovieRepository
 import kotlinx.coroutines.Dispatchers
 
-class MovieViewModel(private val repo: MovieRepository) : ViewModel() {
+class MovieViewModel(private val repo: IMovieRepository) : ViewModel() {
 
-    fun fetchUpcomingMovies() = liveData(Dispatchers.IO) {
+    fun fetchMainPageMovies() = liveData(Dispatchers.IO) {
         Log.d("LiveData","MovieViewModel fetchUpcomingMovies")
         emit( Resource.Loading() )
-        try{
-            emit( Resource.Success( repo.getUpcomingMovies()))
-        }catch ( e:  Exception ){
-            Log.d("LiveData","MovieViewModel fail")
-            emit( Resource.Failure(e) )
+        try {
+            emit(
+                Resource.Success (
+                        Triple( repo.getUpcomingMovies(), repo.getTopRatedMovies(), repo.getPopularMovies() )
+                )
+            )
+        } catch ( e: Exception ) {
+            emit(Resource.Failure(e))
         }
     }
 

@@ -9,7 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-
     val webservice: IWebService by lazy {
 
         Log.d("LiveData","En el retrofit")
